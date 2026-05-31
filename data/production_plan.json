@@ -1,0 +1,55 @@
+{
+  "scenario_name": "3x3_flow_shop_basic",
+  "machines": [
+    {
+      "machine_id": "M1",
+      "machine_type": "LITHO"
+    },
+    {
+      "machine_id": "M2",
+      "machine_type": "ETCH"
+    },
+    {
+      "machine_id": "M3",
+      "machine_type": "CLEAN"
+    }
+  ],
+  "jobs": [
+    {
+      "job_id": "J1",
+      "release_time": 0.0,
+      "due_date": 600.0,
+      "priority": 1,
+      "product_id": "PROD_A",
+      "operations": [
+        { "operation_index": 0, "machine_id": "M1", "processing_time": 180.0, "recipe_id": "RECIPE_A", "setup_time": 10.0 },
+        { "operation_index": 1, "machine_id": "M2", "processing_time": 120.0, "recipe_id": "RECIPE_B", "setup_time": 15.0 },
+        { "operation_index": 2, "machine_id": "M3", "processing_time": 120.0, "recipe_id": "RECIPE_C", "setup_time": 5.0 }
+      ]
+    },
+    {
+      "job_id": "J2",
+      "release_time": 0.0,
+      "due_date": 500.0,
+      "priority": 2,
+      "product_id": "PROD_B",
+      "operations": [
+        { "operation_index": 0, "machine_id": "M1", "processing_time": 120.0, "recipe_id": "RECIPE_A", "setup_time": 10.0 },
+        { "operation_index": 1, "machine_id": "M2", "processing_time": 180.0, "recipe_id": "RECIPE_B", "setup_time": 15.0 },
+        { "operation_index": 2, "machine_id": "M3", "processing_time": 60.0, "recipe_id": "RECIPE_C", "setup_time": 5.0 }
+      ]
+    },
+    {
+      "job_id": "J3",
+      "release_time": 30.0,
+      "due_date": 400.0,
+      "priority": 3,
+      "product_id": "PROD_A",
+      "operations": [
+        { "operation_index": 0, "machine_id": "M1", "processing_time": 60.0, "recipe_id": "RECIPE_A", "setup_time": 10.0 },
+        { "operation_index": 1, "machine_id": "M2", "processing_time": 120.0, "recipe_id": "RECIPE_B", "setup_time": 15.0 },
+        { "operation_index": 2, "machine_id": "M3", "processing_time": 120.0, "recipe_id": "RECIPE_C", "setup_time": 5.0 }
+      ]
+    }
+  ]
+}
