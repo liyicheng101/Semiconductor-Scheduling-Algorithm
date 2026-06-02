@@ -8,6 +8,7 @@
 
 from __future__ import annotations
 
+import copy
 import json
 import sys
 from pathlib import Path
@@ -18,6 +19,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from src.models import Job, Machine, Operation, SchedulingProblem
+from src.scheduler import RuleBasedScheduler
 
 DEFAULT_DATA_PATH = ROOT / "data" / "production_plan.json"
 
@@ -82,6 +84,15 @@ def main() -> None:
     print(f"  机器数量 : {len(problem.machines)}")
     print(f"  工件数量 : {len(problem.jobs)}")
     print(f"  工序总数 : {total_operations}")
+
+    # 调度器会原地修改 Machine/Operation 状态，因此不同规则要用独立副本。
+    scheduler = RuleBasedScheduler()
+    fifo_result = scheduler.schedule_fifo(copy.deepcopy(problem))
+    spt_result = scheduler.schedule_spt(copy.deepcopy(problem))
+
+    print("\n调度结果（完工时间 / Makespan）")
+    print(f"  FIFO : {fifo_result.makespan:.2f}")
+    print(f"  SPT  : {spt_result.makespan:.2f}")
 
 
 if __name__ == "__main__":
